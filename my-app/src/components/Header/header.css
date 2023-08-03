@@ -1,0 +1,11 @@
+.header {
+    height: 100px;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
