@@ -5,9 +5,9 @@ import DropFileInput from "../components/drop-file-input/DropFileInput";
 
 const Home = () => {
 
-    const onFileChange =(files) => {
-        console.log(files);
-    }
+    // const onFileChange =(files) => {
+    //     console.log(files);
+    // }
     return (
         <>
         <section className="box">
@@ -18,7 +18,7 @@ const Home = () => {
                 Uzyskaj tekst z pliku audio MP3
             </p>
             <DropFileInput
-                onFileChange={(files) => onFileChange(files)}
+                // onFileChange={(files) => onFileChange(files)}
             />
         </section>
         </>
