@@ -6,6 +6,7 @@ import "../../styles/App.css";
 
 import Mp3 from '../../assets/mp3.png';
 import UploadImg from '../../assets/upload.svg';
+import {getTranscriptionFromOpenAI} from "../../scripts/OpenAiFunctions";
 
 
 const DropFileInput = () => {
@@ -15,6 +16,7 @@ const DropFileInput = () => {
     const [file, setFile] = useState(null);
     const [hideFileInput, setHideFileInput] = useState(false);
     const [isDisabled, setDisabled] = useState(true);
+    const [transcriptFile, setTranscriptFile] = useState(null);
 
     const onDragEnter = () => wrapperRef.current.classList.add('dragover');
 
@@ -24,7 +26,7 @@ const DropFileInput = () => {
 
     const onTokenInput = (event) => {
         const input = event.target.value;
-        if (input.length ===6) {
+        if (input.length > 0) {
             setDisabled(false);
         } else {
             setDisabled(true);
@@ -61,6 +63,21 @@ const DropFileInput = () => {
             i++;
         }
         return (Math.round(_size * 100) / 100) + ' ' + fSExt[i];
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault();
+
+        const apiKey = event.target["apiKey"].value;
+
+        getTranscriptionFromOpenAI(file, apiKey)
+            .then(response => {
+                setTranscriptFile(response.data);
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     return (
@@ -100,8 +117,8 @@ const DropFileInput = () => {
                                 <span className="drop-file-preview__item__del" onClick={() => fileRemove()}>x</span>
                             </div>
                         <p className="drop-file-preview__title">Wprowadź token</p>
-                        <form className="container">
-                            <input type="text" onChange={onTokenInput} className="input__token" placeholder="Bearer token"/><br />
+                        <form className="container" onSubmit={handleSubmit} method="POST">
+                            <input type="text" name="apiKey" onChange={onTokenInput} className="input__token" placeholder="Bearer token"/><br />
                             <button className="button button__send" disabled={isDisabled}>Generuj</button>
                         </form>
                     </div>
