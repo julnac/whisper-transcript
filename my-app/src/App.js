@@ -1,14 +1,18 @@
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './styles/App.css';
 
 import Home from "./pages/Home.js";
-import Header from "./components/Header/Header.js";
+import Download from "./pages/Download.js";
 
 function App() {
   return (
-      <div>
-        <Header/>
-        <Home />   
-      </div>
+      <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/download" element={<Download />} />
+      </Routes>
+    </Router>
   );
 }
 

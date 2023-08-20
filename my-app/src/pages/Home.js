@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/App.css";
 import DropFileInput from "../components/drop-file-input/DropFileInput";
+import Header from "../components/Header/Header.js";
 
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
     // }
     return (
         <>
+        <Header />
         <section className="box">
             <h2 className="title">
                 Wygeneruj Transkrypt

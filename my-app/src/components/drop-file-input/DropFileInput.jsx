@@ -8,6 +8,8 @@ import Mp3 from '../../assets/mp3.png';
 import UploadImg from '../../assets/upload.svg';
 import {getTranscriptionFromOpenAI} from "../../scripts/OpenAiFunctions";
 
+import { useNavigate } from 'react-router-dom';
+
 
 const DropFileInput = () => {
 
@@ -80,6 +82,12 @@ const DropFileInput = () => {
             })
     }
 
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/download');
+      };
+
     return (
         <>
             {
@@ -119,7 +127,7 @@ const DropFileInput = () => {
                         <p className="drop-file-preview__title">Wprowadź token</p>
                         <form className="container" onSubmit={handleSubmit} method="POST">
                             <input type="text" name="apiKey" onChange={onTokenInput} className="input__token" placeholder="Bearer token"/><br />
-                            <button className="button button__send" disabled={isDisabled}>Generuj</button>
+                            <button className="button button__send" disabled={isDisabled} onClick={handleClick}>Generuj</button>
                         </form>
                     </div>
                 ) : null
