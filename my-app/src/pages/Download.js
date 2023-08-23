@@ -38,7 +38,7 @@ const Download = () => {
             <p className="subtitle">
                 Pobierz plik z transkryptem
             </p>
-            <button onclick={handleDownload()}>Pobierz Transkrypt</button>
+            <button onClick={handleDownload}>Pobierz Transkrypt</button>
         </section> 
         </>
     )
