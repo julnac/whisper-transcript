@@ -6,9 +6,6 @@ import Header from "../components/Header/Header.js";
 
 const Home = () => {
 
-    // const onFileChange =(files) => {
-    //     console.log(files);
-    // }
     return (
         <>
         <Header />
@@ -19,9 +16,7 @@ const Home = () => {
             <p className="subtitle">
                 Uzyskaj tekst z pliku audio MP3
             </p>
-            <DropFileInput
-                // onFileChange={(files) => onFileChange(files)}
-            />
+            <DropFileInput/>
         </section>
         </>
     )

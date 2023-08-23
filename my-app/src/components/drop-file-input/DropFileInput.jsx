@@ -18,7 +18,6 @@ const DropFileInput = () => {
     const [file, setFile] = useState(null);
     const [hideFileInput, setHideFileInput] = useState(false);
     const [isDisabled, setDisabled] = useState(true);
-    // const [transcriptFile, setTranscriptFile] = useState(null);
 
     const onDragEnter = () => wrapperRef.current.classList.add('dragover');
 
