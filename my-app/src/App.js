@@ -9,8 +9,8 @@ function App() {
   return (
       <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/download" element={<Download />} />
+        <Route path="/whisper-transcript" element={<Home />} />
+        <Route path="/whisper-transcript/download" element={<Download />} />
       </Routes>
     </Router>
   );

@@ -74,7 +74,7 @@ const DropFileInput = () => {
         const apiKey = event.target["apiKey"].value;
         getTranscriptionFromOpenAI(file, apiKey)
             .then(response => {
-                navigate('/download', { state: { transcript: response.data } });
+                navigate('/whisper-transcript/download', { state: { transcript: response.data } });
             })
             .catch(error => {
                 console.log(error);
