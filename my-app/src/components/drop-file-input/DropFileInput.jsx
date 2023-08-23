@@ -18,13 +18,15 @@ const DropFileInput = () => {
     const [file, setFile] = useState(null);
     const [hideFileInput, setHideFileInput] = useState(false);
     const [isDisabled, setDisabled] = useState(true);
-    const [transcriptFile, setTranscriptFile] = useState(null);
+    // const [transcriptFile, setTranscriptFile] = useState(null);
 
     const onDragEnter = () => wrapperRef.current.classList.add('dragover');
 
     const onDragLeave = () => wrapperRef.current.classList.remove('dragover');
 
     const onDrop = () => wrapperRef.current.classList.remove('dragover');
+
+    const navigate = useNavigate();
 
     const onTokenInput = (event) => {
         const input = event.target.value;
@@ -71,22 +73,15 @@ const DropFileInput = () => {
         event.preventDefault();
 
         const apiKey = event.target["apiKey"].value;
-
         getTranscriptionFromOpenAI(file, apiKey)
             .then(response => {
-                setTranscriptFile(response.data);
-                console.log(response.data);
+                navigate('/download', { state: { transcript: response.data } });
             })
             .catch(error => {
                 console.log(error);
-            })
+                // TODO - wyswietl blad
+            });
     }
-
-    const navigate = useNavigate();
-
-    const handleClick = () => {
-        navigate('/download');
-      };
 
     return (
         <>
@@ -127,7 +122,7 @@ const DropFileInput = () => {
                         <p className="drop-file-preview__title">Wprowadź token</p>
                         <form className="container" onSubmit={handleSubmit} method="POST">
                             <input type="text" name="apiKey" onChange={onTokenInput} className="input__token" placeholder="Bearer token"/><br />
-                            <button className="button button__send" disabled={isDisabled} onClick={handleClick}>Generuj</button>
+                            <button className="button button__send" disabled={isDisabled} type="submit">Generuj</button>
                         </form>
                     </div>
                 ) : null
