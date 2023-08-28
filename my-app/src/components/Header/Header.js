@@ -8,8 +8,8 @@ const Header = () => {
         <>
         <header className="header">
             <nav className="nav container">
-                <a href="/" className="nav__logo"><h1>Subtitlio</h1></a>
-                <a href="/" className="nav__item">Jak to działa?</a>
+                <a href="/whisper-transcript/" className="nav__logo"><h1>Subtitlio</h1></a>
+                <a href="https://www.youtube.com/watch?v=Gd0JD2aHNDQ" target="_blank" rel="noreferrer" className="nav__item">Skąd wziąć bearer token?</a>
             </nav>
         </header>
         </>
