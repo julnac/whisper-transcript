@@ -4,12 +4,13 @@ import PropTypes from 'prop-types'
 import "./drop-file-input.css";
 import "../../styles/App.css";
 
+import ProgressBar from '../progress_bar/ProgressBar.js';
+
 import Mp3 from '../../assets/mp3.png';
 import UploadImg from '../../assets/upload.svg';
 import {getTranscriptionFromOpenAI} from "../../scripts/OpenAiFunctions";
 
 import { useNavigate } from 'react-router-dom';
-
 
 const DropFileInput = () => {
 
@@ -18,6 +19,8 @@ const DropFileInput = () => {
     const [file, setFile] = useState(null);
     const [hideFileInput, setHideFileInput] = useState(false);
     const [isDisabled, setDisabled] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
+
 
     const onDragEnter = () => wrapperRef.current.classList.add('dragover');
 
@@ -79,12 +82,16 @@ const DropFileInput = () => {
     function handleSubmit(event) {
         event.preventDefault();
 
+        setIsLoading(true);
+
         const apiKey = event.target["apiKey"].value;
         getTranscriptionFromOpenAI(file, apiKey)
             .then(response => {
+                setIsLoading(false);
                 navigate('/whisper-transcript/download', { state: { transcript: response.data } });
             })
             .catch(error => {
+                setIsLoading(false);
                 console.log(error);
                 // TODO - wyswietl blad
             });
@@ -127,10 +134,13 @@ const DropFileInput = () => {
                                 <span className="drop-file-preview__item__del" onClick={() => fileRemove()}>x</span>
                             </div>
                         <p className="drop-file-preview__title">Wprowadź token</p>
-                        <form className="container" onSubmit={handleSubmit} method="POST">
-                            <input type="text" name="apiKey" onChange={onTokenInput} className="input__token" placeholder="Bearer token"/><br />
-                            <button className="button button__send" disabled={isDisabled} type="submit">Generuj</button>
-                        </form>
+                        <div>
+                            <form className="container" onSubmit={handleSubmit} method="POST">
+                                <input type="text" name="apiKey" onChange={onTokenInput} className="input__token" placeholder="Bearer token"/><br />
+                                <button className="button button__send" disabled={isDisabled} type="submit">Generuj</button>
+                            </form>
+                            {isLoading ? <ProgressBar /> : null}
+                        </div>
                     </div>
                 ) : null
             }
