@@ -40,8 +40,16 @@ const DropFileInput = () => {
         const allowedExtensions = /(\.mp3)$/i;
         const newFile = e.target.files[0];
 
+        // File size limit in bytes (25MB = 25 * 1024 * 1024 bytes)
+        const fileSizeLimit = 25 * 1024 * 1024;
+
         if (!allowedExtensions.exec(newFile.name)) {
             alert('Invalid file type');
+            return false;
+        }
+
+        if (newFile.size > fileSizeLimit) {
+            alert('File size exceeds 25MB');
             return false;
         }
 
