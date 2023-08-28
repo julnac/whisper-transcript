@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/whisper-transcript/static/css/main.5757833f.css",
-    "main.js": "/whisper-transcript/static/js/main.9071dc57.js",
+    "main.js": "/whisper-transcript/static/js/main.1b71f509.js",
     "static/media/mp3.png": "/whisper-transcript/static/media/mp3.ffe2d734e2ac50642b6a.png",
     "index.html": "/whisper-transcript/index.html",
     "static/media/upload.svg": "/whisper-transcript/static/media/upload.d9398b96355b776468c0f9b41efa7447.svg",
     "main.5757833f.css.map": "/whisper-transcript/static/css/main.5757833f.css.map",
-    "main.9071dc57.js.map": "/whisper-transcript/static/js/main.9071dc57.js.map"
+    "main.1b71f509.js.map": "/whisper-transcript/static/js/main.1b71f509.js.map"
   },
   "entrypoints": [
     "static/css/main.5757833f.css",
-    "static/js/main.9071dc57.js"
+    "static/js/main.1b71f509.js"
   ]
 }
