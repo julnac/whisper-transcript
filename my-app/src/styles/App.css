@@ -139,13 +139,26 @@ img{
   font-weight: var(--font-medium);
 }
 .button__download{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
     padding: 1rem 1.75rem;
-    border-radius: 2rem;
+    /* border-radius: 2rem; */
+    align-items: center;
+
+    color: var(--txt-second-color);
+    font-size: var(--small-font-size);
+    font-weight: var(--font-normal);
+
+    /* border: 2px solid var(--border-color); */
+    border-radius: 20px;
+    background-color: var(--input-bg);
 }
 .button__send{
-    padding: .5rem 1rem;
-    border-radius: 1rem;
-    margin: 0;
+    padding: 1rem 1.75rem;
+    border-radius: 2rem;
 }
 
 .button:hover{

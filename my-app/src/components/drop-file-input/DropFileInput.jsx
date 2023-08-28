@@ -96,7 +96,7 @@ const DropFileInput = () => {
                         onFileDrop={onFileDrop}
                     >
                         <div className="drop-file-input__label">
-                            <button className='button button__download'>
+                            <button className="button button__send">
                                 <img src={UploadImg} alt="Upload Icon" className="download_icon"/>
                                 <p>Wgraj Plik</p>
                             </button>

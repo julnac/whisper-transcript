@@ -2,8 +2,10 @@ import React from "react";
 import "../styles/App.css";
 import Header from "../components/Header/Header.js";
 import { useLocation } from 'react-router-dom';
+import DownloadButton from "../components/download_button/DownloadButton.js";
 
 const downloadTranscript = (text) => {
+
     const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
@@ -33,12 +35,17 @@ const Download = () => {
         <Header />
         <section className="box"> 
             <h2 className="title">
-                Gotowe
+                Gotowe !
             </h2>
             <p className="subtitle">
                 Pobierz plik z transkryptem
             </p>
-            <button onClick={handleDownload}>Pobierz Transkrypt</button>
+            <div className="button__download" >
+                <DownloadButton
+                    onHandleDownload={handleDownload}
+                />
+                Pobierz Transkrypt
+            </div>
         </section> 
         </>
     )

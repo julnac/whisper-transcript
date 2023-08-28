@@ -1,0 +1,108 @@
+.btn-circle-download {
+  position: relative;
+  height: 48px;
+  width: 48px;
+  margin-bottom: 20px;
+  /* margin: auto; */
+  border-radius: 100%;
+  background: var(--border-color);
+  /* cursor: pointer; */
+  overflow: hidden;
+  transition: all .2s ease;
+}
+.btn-circle-download:after {
+  content: "";
+  position: relative;
+  display: block;
+  width: 200%;
+  height: 100%;
+  background-image: linear-gradient(100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0));
+  transform: translateX(-100%);
+}
+.btn-circle-download svg {
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+.btn-circle-download #border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  stroke: none;
+  stroke-dasharray: 144;
+  stroke-dashoffset: 144;
+  transition: all .9s linear;
+}
+.btn-circle-download #arrow {
+  position: absolute;
+  top: 14px;
+  left: 17px;
+  stroke: var(--box-bg);
+  transition: all .2s ease;
+}
+.btn-circle-download #check {
+  position: absolute;
+  top: 17px;
+  left: 13px;
+  stroke: var(--box-bg);
+  transform: scale(0);
+}
+.btn-circle-download:hover {
+  background: var(--txt-second-color);
+}
+.btn-circle-download:hover #arrow path, .btn-circle-download:hover #arrow polyline {
+  stroke: var(--box-bg);
+}
+.btn-circle-download.load {
+  background: var(--box-bg);
+}
+.btn-circle-download.load #arrow path, .btn-circle-download.load #arrow polyline {
+  stroke: var(--border-color);
+}
+.btn-circle-download.load #border {
+  stroke: var(--border-color);
+  stroke-dasharray: 144;
+  stroke-dashoffset: 0;
+}
+.btn-circle-download.done {
+  background: var(--border-color);
+  animation: rubberBand .8s;
+}
+.btn-circle-download.done:after {
+  transform: translateX(50%);
+  transition: transform .4s ease;
+  transition-delay: .7s;
+}
+.btn-circle-download.done #border, .btn-circle-download.done #arrow {
+  display: none;
+}
+.btn-circle-download.done #check {
+  transform: scale(1);
+  transition: all .2s ease;
+  transition-delay: .2s;
+}
+
+@keyframes rubberBand {
+  from {
+    transform: scale(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.15, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.15, 1);
+  }
+  50% {
+    transform: scale3d(1.10, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, .95, 1)
+  }
+  to {
+    transform: scale3d(1, 1, 1)
+  }
+}
